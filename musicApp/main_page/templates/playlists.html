@@ -1,0 +1,119 @@
+{% extends "main.html" %}
+{% load static %}
+
+{% block title %} MusicApp | Playlists {% endblock %}
+
+{% block extra_css %} 
+<link rel="stylesheet" href="{% static 'playlists/css/playlists.css' %}"> 
+{% endblock %}
+
+
+{% block content %}
+            <div class="playlists playlist">
+                <!--
+                <div class="playlists">
+                    <h5>Select Playlist => </h5>
+                    <div class="dropdown">
+                        <button onclick="toggleDropdown()" class="dropbtn" id="dropdownButton">{{ Selected_playlist.name }}</button>
+                        <div id="dropdownItems" class="dropdown-content">
+                            {% for i in PlaylistAll %}
+                            {% if Selected_playlist.name != i.name  and i.name != "Trending" %}
+                            <div onclick="selectItem('{{ i.id }}', '/playlist/{{ i.id }}')">
+                                {{ i.name }}
+                            </div>
+                            {% endif %}
+                            {% endfor %}
+                        </div>
+                    </div>
+                </div>
+                -->
+                
+                <div class="playlists-row">
+                    <div class="header">
+                        <div class="name">My Playlists</div>
+                        <div class="add_playlist create-playlist-button">
+                            <button type="button"><i class="bx bx-plus"></i></button>
+                        </div>
+                    </div>
+                    <div class="items">
+                        {% for list in PlaylistAll %}
+                        {% if list.id != trending.id %}
+                        {% if list.image %}
+                        <div class="item" onclick="location.href='/playlist/{{ list.id }}';">
+                            <div class="info">
+                                <img src="{{ list.image.url }}">
+                                <h4>{{ list.name }}</h4>
+                                {% if user.is_authenticated %}
+                                <p>- {{ list.songs.count }} Songs -</p>
+                                {% endif %}
+                            </div>
+                        </div>
+                        {% else %}
+                        <div class="item" onclick="location.href='/playlist/{{ list.id }}';">
+                            <div class="info">
+                                <img src="../../static/img/def-image.png">
+                                <h4>{{ list.name }}</h4>
+                                {% if user.is_authenticated %}
+                                <p>- {{ list.songs.count }} Songs -</p>
+                                {% endif %}
+                            </div>
+                        </div>
+                        {% endif %}
+                        {% endif %}
+                        {% endfor %}
+                    </div>
+                </div>
+                
+                <div class="playlists-row">
+                    <div class="header">
+                        <div class="name">Saved Playlists</div>
+                    </div>
+                    <div class="items">
+                        <div class="item">
+                            dnvldv
+                        </div>
+                        <div class="item">dnvldv</div>
+                        <div class="item">dnvldv</div>
+                        <div class="item">dnvldv</div>
+                        <div class="item">dnvldv</div>
+                        <div class="item">dnvldv</div>
+                        <div class="item">dnvldv</div>
+                    </div>
+                </div>
+                <div class="playlists-row">
+                    <div class="header">
+                        <div class="name">Saved Playlists</div>
+                    </div>
+                    <div class="items">
+                        <div class="item">
+                            dnvldv
+                        </div>
+                        <div class="item">dnvldv</div>
+                        <div class="item">dnvldv</div>
+                        <div class="item">dnvldv</div>
+                        <div class="item">dnvldv</div>
+                        <div class="item">dnvldv</div>
+                        <div class="item">dnvldv</div>
+                    </div>
+                </div>
+                <div class="playlists-row">
+                    <div class="header">
+                        <div class="name">Saved Playlists</div>
+                    </div>
+                    <div class="items">
+                        <div class="item">
+                            dnvldv
+                        </div>
+                        <div class="item">dnvldv</div>
+                        <div class="item">dnvldv</div>
+                        <div class="item">dnvldv</div>
+                        <div class="item">dnvldv</div>
+                        <div class="item">dnvldv</div>
+                        <div class="item">dnvldv</div>
+                    </div>
+                </div>
+                
+            </div>
+
+        </main>
+{% endblock%}

@@ -1,0 +1,224 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="csrf-token" content="{{ csrf_token }}">
+    <title>{% block title %}{% endblock %}</title>
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+    <link rel="stylesheet" href="{% static 'css/style.css' %}"> 
+    {% block extra_css %}{% endblock %}
+</head>
+<body>
+    {% if messages %}
+    {% for message in messages %}
+    <div style="
+    background-color: #51736F; 
+    display: flex; 
+    align-items: center; 
+    justify-content: center;
+    color: #f2f2f2;
+    letter-spacing: 5px;
+    font-size: 12px;
+    line-height: 30px;" {% if message.tags %} class="alert alert-{{ message.tags }}" {% endif %}>{{ message }}</div>
+    {% endfor %}
+    {% endif %}
+
+    <div class="create-playlist-overlay hidden">
+        <div class="side-progress-back"><div class="side-progress side-progress-level1 side-progress-level2 side-progress-level3 side-progress-level4">.</div></div>
+        <div class="modal">
+            <div class="header">
+                <h2>Create Playlist</h2>
+                <button class="close-overlay-button"><i class='bx  bx-x' style="font-size: 28px; color: #232a2e;"></i> </button>
+            </div>
+            <div class="create-new-form">
+                <form method="post">
+                    {% csrf_token %}
+                    {{ form.name }}
+                    {{ form.description }}
+                    {{ form.image }}
+                    <label for="id_image"><img style="border: 1px solid #919191;" id="image-preview" data-default-src="{% static 'img/def-image.png' %}" src="{% static 'img/def-image.png' %}" alt=""></label>
+                    {{ form.songs }}
+                    <button class="form-button submit-overlay-button" type="submit">Create</button>
+                </form>
+            </div>
+        </div>
+    </div>
+    <div class="container">
+
+        <aside class="sidebar">
+            <div class="logo">
+                <button class="menu-btn" id="menu-close">
+                    <i class='bx bx-log-out-circle'></i>
+                </button>
+                <i class='bx bx-pulse'></i>
+                <a href="/index">MusicApp</a>
+            </div>
+
+            <div class="menu">
+                <h5>Menu</h5>
+                <ul>
+                    <li>
+                        <i class='bx bxs-bolt-circle'></i>
+                        <a href="/explore">Explore</a>
+                    </li>
+                    <li>
+                        <i class='bx bxs-volume-full'></i>
+                        <a href="/genres">Genres</a>
+                    </li>
+                    <li>
+                        <i class='bx bxs-microphone'></i>
+                        <a href="/artists">Artists</a>
+                    </li>
+                </ul>
+            </div>
+
+            <div class="menu">
+                <h5>Library</h5>
+                <ul>
+                    <li>
+                        <i class='bx bxs-photo-album'></i>
+                        <a href="/albums">Albums</a>
+                    </li>
+                    <li>
+                        <i class='bx bxs-heart'></i>
+                        <a href="/favourites">Favourites</a>
+                    </li>
+                </ul>
+            </div>
+
+            <div class="menu">
+                <h5>Playlist</h5>
+                <ul>
+                    <li>
+                        <i class='bx bxs-plus-square'></i>
+                        <a class="create-playlist-button">Create New</a>
+                    </li>
+                    {% for i in Playlist3 %}
+                    {% if i.name != "Trending" %}
+                    <li>
+                        <i class='bx bxs-caret-right-circle'></i>
+                        <a href="/playlist/{{ i.id }}/">{{i.name}}</a>
+                    </li>
+                    {% endif %}
+                    {% endfor %}
+                </ul>
+            </div>
+
+            <div class="playing">
+                <div class="top">
+                    <img src="{% static 'img/profile.png' %}">
+                    <h4>Apple<br>Homepod</h4>
+                </div>
+                <div class="bottom">
+                    <i class='bx bx-podcast'></i>
+                    <p>Playing On Device</p>
+                </div>
+            </div>
+
+        </aside>
+
+        <main>
+            <header>
+                <div class="nav-links">
+                    <button class="menu-btn" id="menu-open">
+                        <i class="bx bx-menu"></i>
+                    </button>
+                    <a href="/index">Music</a>
+                    <a href="/live">Live</a>
+                    <a href="/playlists">Playlists</a>
+                </div>
+                <div class="search">
+                    <i class="bx bx-search"></i>
+                    <input type="text" placeholder="Type here to search">
+                </div>
+            </header>
+            {% block content %}
+            
+            
+        
+        {% endblock %}
+        <div class="right-section">
+            <header class="profile">
+                <i class="bx bxs-bell"></i>
+                <a href="user/logout"><i id="bxs-cog" class="bx bxs-cog"></i></a>
+                <button>
+                    <div class="user">
+                        <div class="left">
+                            <img src="{% static 'img/profile.png' %}">
+                        </div>
+                        <div class="right">
+                            {% if user.is_authenticated %}
+                            <h5> {{ user.username }} </h5>
+                            {% else %}
+                            <a href="user/login"><h5> Oturum Açın </h5></a>
+                            {% endif %}
+                        </div>
+                    </div>
+                </button>
+            </header>
+
+            <div class="music-player">
+                <div class="top-section">
+                    <div class="header">
+                        <h5>Player</h5>
+                        <button id="player-close-btn" type="button" style="
+                        background-color: transparent;
+                        border: none;
+                        ">
+                            <i class='bx bx-log-out-circle' style="transform: rotate(180deg); font-size: 22px;"></i>
+                        </button> 
+                    </div>
+                    <div class="song-info">
+                        <img id="image" src="../static/img/default-music-img.png">
+                        <div class="description">
+                            <h3 id="m_name">MusicName</h3>
+                            <h5 id="a_name">ArtistName</h5>
+                            <p id="player-playlist-name" data-player-playlist-name="{{ Selected_playlist.name }}">_</p>
+                        </div>
+                        <div class="progress">
+                            <p id="current-time">0:00</p>
+                            <div>
+                                <!--
+                                <div class="active-line"></div>
+                                <div class="deactive-line"></div>
+                                -->
+                                <audio id="active_song" controls preload="auto">
+                                    <source id="source" src="">
+                                </audio>
+                                <input 
+                                type="range" 
+                                min="0" 
+                                value="0" 
+                                step="0.01" 
+                                id="progress-slide">
+                            </div>
+                            <p id="duration">0:00</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="player-actions">
+                    <div class="buttons">
+                        <i class="bx bx-repeat"></i>
+                        <i class="bx bx-first-page"></i>
+                        <div onclick="playPause()"><i class="bx bxs-right-arrow play-button" id="play-button"></i> </div>
+                        <i class="bx bx-last-page"></i>
+                        <i class="bx bx-transfer-alt"></i>
+                    </div>
+
+                    <div class="lyrics">
+                        <i class="bx bx-chevron-up"></i>
+                        <h5>LYRICS</h5>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+    <script src="{% static 'js/script.js' %}"></script>
+</body>
+</html>

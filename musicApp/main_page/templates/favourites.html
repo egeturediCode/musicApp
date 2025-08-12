@@ -1,0 +1,51 @@
+{% extends "main.html" %}
+{% load static %}
+
+{% block title %} MusicApp | Favourites {% endblock %}
+
+{% block extra_css %} 
+<link rel="stylesheet" href="{% static 'favourites/css/favourites.css' %}"> 
+{% endblock %}
+
+
+{% block content %}
+            <div class="playlist">
+                <div class="music-list">
+                    <div class="header">
+                        <h5>Favourites</h5>
+                        <a href="#">See all</a>
+                    </div>
+                    <div class="items">
+                        <!-- Django'da geçiçi değişken tanımlamak için fav_count = 0 yerine with scope'u açılır.-->
+                        {% for song in Fav_songs %}
+                        <div class="item">
+                            <div class="info">
+                                <p>#{{ forloop.counter }}</p>
+                                <img src="{{ song.image.url }}">
+                                <div class="details">
+                                    <h5>{{ song.music_name }}</h5>
+                                    <p>{{ song.artist_name }}</p>
+                                </div>
+                            </div>
+                            <div class="actions">
+                                <p>{{ song.duration }}</p>
+                                <div class="icon">
+                                   <div class="run-button player-open-btn" 
+                                    data-song-music-name="{{ song.music_name }}"
+                                    data-song-artist-name="{{ song.artist_name }}"
+                                    data-song-duration="{{ song.duration }}"
+                                    data-song-image="{{ song.image.url }}"
+                                    data-song-file="{{ song.audio_file }}"
+                                    ><i class="bx bxs-right-arrow"></i></div>
+                                </div>
+                                <i class="bx bxs-plus-square"></i>
+                            </div>
+                        </div>
+                        {% endfor %}
+                    </div>
+                </div>
+            </div>
+
+</main>
+{% endblock%}
+

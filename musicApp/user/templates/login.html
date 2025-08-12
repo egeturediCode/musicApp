@@ -1,0 +1,49 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MusicApp | Login</title>
+    <link rel="stylesheet" href="{% static 'login/css/login.css' %}"> 
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/remixicon/4.6.0/remixicon.css">
+
+</head>
+<body>
+    <div class="container">
+        <div class="left">
+            <img src="../static/login/img/pression.svg" alt="">
+            <!--
+            <h1 style="position: absolute; top: 15%; left: 4%; user-select: none; color: #011f26; font-size: 58px; line-height: 70px;">Listen to</h1>
+            <h1 style="position: absolute; top: 25%; left: 4%; user-select: none; color: #f2f2f2; font-size: 96px; line-height: 70px;">High Pression</h1>
+            <h1 style="position: absolute; top: 38%; left: 65%; user-select: none; color: #011f26; font-size: 30px; line-height: 70px;">of Your Heart</span></h1>
+            -->
+        </div>
+        <div class="right">
+            <h3 style="color: #f2f2f2;font-size: 42px;">Hello Again!</h3>
+            <div class="form">
+                <form method="post">
+                    <p style="width: 55%; margin: auto; margin-bottom: -25px; color: #f2f2f2; font-size: 12px;">Login with username and password</p>
+                    {% csrf_token %}
+                    {{ form.as_p }}
+                    <div><a href="#">Recovery Password</a></div>
+                    <button class="form-button" type="submit">Log In</button>
+                </form>
+            </div>
+            <div style="display: flex; line-height: 0px;">
+                <hr style="width: 100px; height: 1px; border: none; background-color: #cccccc;">
+                <p style="margin: 0 10px; font-size: 13px; color: #cccccc;">Or continue with</p>
+                <hr style="width: 100px; height: 1px; border: none; background-color: #cccccc;">
+            </div>
+            <div class="login-with-buttons">
+                <button><i style="color: #011f26;" class="ri-google-fill"></i></button>
+                <button><i style="color: #000;" class="ri-apple-fill"></i></button>
+                <button><i style="color: rgb(59, 59, 222);" class="ri-facebook-circle-fill"></i></button>
+            </div>
+        </div>
+    </div>
+
+    <script src=""></script>
+</body>
+</html>

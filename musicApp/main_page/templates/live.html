@@ -1,0 +1,22 @@
+{% extends "main.html" %}
+{% load static %}
+
+{% block title %} MusicApp | Live {% endblock %}
+
+{% block extra_css %} 
+<link rel="stylesheet" href="{% static 'live/css/live.css' %}"> 
+{% endblock %}
+
+
+{% block content %}
+            <div id="">
+                <audio controls>
+                    <source src="../../media/audio/NEFFEX_-_Rumors.mp3">
+                </audio>
+                <input type="range" value="0" id="progress">
+            </div>
+            <div style="background-color: red;"><i class=" bx bx-pause-circle"></i></div>
+
+</main>
+
+{% endblock%}

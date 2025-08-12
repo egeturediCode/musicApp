@@ -1,0 +1,81 @@
+{% extends "main.html" %}
+{% load static %}
+
+{% block title %} MusicApp | Playlists {% endblock %}
+
+{% block extra_css %} 
+<link rel="stylesheet" href="{% static 'playlist_page/css/playlist.css' %}"> 
+{% endblock %}
+
+
+{% block content %}
+            <div class="trending playlist-info">
+                <div class="left">
+                    {% if user.is_authenticated %}
+                            <h5> <span style="color: var(--color2);">-created by</span> {{ user.username }} </h5>
+                            {% else %}
+                            <h5></h5>
+                            {% endif %}
+                    <div class="info">
+                        <h2>{{ Selected_playlist.name }}</h2>
+                        <div style="display: flex;">
+                            <h4 style="
+white-space: nowrap;      
+overflow: hidden;         
+text-overflow: ellipsis;
+max-width: 400px;
+display: block;">{{ Selected_playlist.description }}</h4>
+                            <h5>{{ Selected_playlist.songs.count }} Songs</h5>
+                        </div>
+                        <div class="buttons">
+                            <button>Edit Playlist</button>
+                            <button>Add To Playlist</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="trending-img playlist-img">
+                    {% if Selected_playlist.image %}
+                    <img src="{{ Selected_playlist.image.url }}">
+                    {% else %}
+                    <img src="{% static 'img/def-image.png' %}">
+                    {% endif %}
+                </div>
+            </div>
+
+            <div class="playlist">
+                <div class="music-list">
+                    <div class="header">
+                        <h5>{{ Selected_playlist.name }}</h5>
+                        <a href="#">See all</a>
+                    </div>
+                    <div class="items">
+                        {% for song in Selected_playlist.songs.all %}
+                        <div class="item">
+                            <div class="info">
+                                <p>#{{ forloop.counter }}</p>
+                                <img src="{{ song.image.url }}">
+                                <div class="details">
+                                    <h5>{{ song.music_name }}</h5>
+                                    <p>{{ song.artist_name }}</p>
+                                </div>
+                            </div>
+                            <div class="actions">
+                                <p>{{ song.duration }}</p>
+                                <div class="icon">
+                                    <div class="run-button player-open-btn" 
+                                    data-song-music-name="{{ song.music_name }}"
+                                    data-song-artist-name="{{ song.artist_name }}"
+                                    data-song-image="{{ song.image.url }}"
+                                    data-song-file="{{ song.audio_file }}"
+                                    ><i class="bx bxs-right-arrow"></i></div>
+                                </div>
+                                <div><i class="bx bx-trash"></i></div>
+                            </div>
+                        </div>
+                        {% endfor %}
+                    </div>
+                </div>
+            </div>
+            
+</main>
+{% endblock %}
