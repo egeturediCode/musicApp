@@ -28,7 +28,7 @@ Follow these steps to run the project locally on your machine.
 1. Clone the repository:
     ```bash
     git clone https://github.com/egeturediCode/musicApp.git
-    
+    cd musicApp
     ```
 
 2. Create and activate a virtual environment:
@@ -46,12 +46,13 @@ Follow these steps to run the project locally on your machine.
 4. Apply database migrations:
     ```bash
     cd musicApp
-    python manage.py migrate
+    python3 manage.py migrate
+    python3 manage.py loaddata initial_data.json
     ```
 
 5. Run the development server:
     ```bash
-    python manage.py runserver
+    python3 manage.py runserver
     ```
 
 6. Open your browser and go to `http://127.0.0.1:8000/`.
@@ -97,4 +98,4 @@ If you have any questions or suggestions, feel free to reach out:
 
 ---
 
-*Thank you!*
+*Front-end design inspired by AsmrProg from Youtube.Thank you!*

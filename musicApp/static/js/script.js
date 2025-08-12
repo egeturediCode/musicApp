@@ -195,48 +195,50 @@ song.ontimeupdate = function () {
     document.getElementById("current-time").innerHTML = formatTime(song.currentTime);
 };
 
+function updateRunButtonIcons(currentSongSrc) {
+    document.querySelectorAll('.run-button').forEach(button => {
+        const icon = button.querySelector('.bxs-right-arrow') || button.querySelector('.bx-pause');
+        if (!icon) return;
+        const file = "/media/" + button.dataset.songFile;
+        if (file === currentSongSrc) {
+            icon.classList.remove('bxs-right-arrow');
+            icon.classList.add('bx-pause');
+        } else {
+            icon.classList.remove('bx-pause');
+            icon.classList.add('bxs-right-arrow');
+        }
+    });
+}
+
 function playPause() {
     const currentSongSrc = new URL(source.src).pathname;
 
     if (song.paused) {
         song.play();
-        
-        document.querySelectorAll('.run-button').forEach(button => {
-            const icon = button.querySelector('.bxs-right-arrow') || button.querySelector('.bx-pause');
-            const file = "/media/" + button.dataset.songFile;
-            if (file === currentSongSrc) {
-                icon.classList.remove('bxs-right-arrow');
-                icon.classList.add('bx-pause');
-            } else {
-                icon.classList.remove('bx-pause');
-                icon.classList.add('bxs-right-arrow');
-            }
-        });
+        updateRunButtonIcons(currentSongSrc);
 
         controlMusic.classList.remove("bxs-right-arrow");
         controlMusic.classList.add("bx-pause");
     } else {
         song.pause();
-
-        document.querySelectorAll('.run-button').forEach(button => {
-            const icon = button.querySelector('.bxs-right-arrow') || button.querySelector('.bx-pause');
-            const file = "/media/" + button.dataset.songFile;
-            if (file === currentSongSrc) {
-                icon.classList.remove('bx-pause');
-                icon.classList.add('bxs-right-arrow');
-            }
-        });
+        updateRunButtonIcons(null);
 
         controlMusic.classList.remove("bx-pause");
         controlMusic.classList.add("bxs-right-arrow");
     }
 }
+
 song.onplay = function () {
+    const currentSongSrc = new URL(source.src).pathname;
+    updateRunButtonIcons(currentSongSrc);
+
     controlMusic.classList.remove("bxs-right-arrow");
     controlMusic.classList.add("bx-pause");
 };
 
 song.onpause = function () {
+    updateRunButtonIcons(null);
+
     controlMusic.classList.remove("bx-pause");
     controlMusic.classList.add("bxs-right-arrow");
 };
@@ -252,101 +254,67 @@ const h3_m_name = document.getElementById("m_name");
 const player_playlist_name = document.getElementById('player-playlist-name');
 
 
-document.addEventListener('DOMContentLoaded', () => {
-    document.querySelectorAll('.run-button').forEach(button => {
-        button.addEventListener('click', () => {
-            const icon = button.querySelector('.bxs-right-arrow') || button.querySelector('.bx-pause');
-            if (icon && icon.classList.contains('bx-pause')) {
-      
-                document.querySelectorAll('.run-button .bx-pause').forEach(icon => {
+document.querySelectorAll('.run-button').forEach(button => {
+    button.addEventListener('click', () => {
+        const icon = button.querySelector('.bxs-right-arrow') || button.querySelector('.bx-pause');
+        if (!icon && !button.classList.contains('not-listed')) return;
+
+        if (icon && icon.classList.contains('bx-pause')) { // icon ise ve bx-pause sınıfına sahipse
+            // Eğer o buton halihazırda pause durumundaysa
+            document.querySelectorAll('.run-button .bx-pause').forEach(icon => {
                 icon.classList.remove('bx-pause');
                 icon.classList.add('bxs-right-arrow');
-                })
-                icon.classList.remove('bx-pause');
-                song.pause();
-            } else {
-                const file = button.dataset.songFile;
-                const image = button.dataset.songImage;
-                const m_name = button.dataset.songMusicName;
-                const a_name = button.dataset.songArtistName;
-                const p_p_n = player_playlist_name.dataset.playerPlaylistName;
-
-                if (button.classList.contains('not-listed')) {
-                    document.querySelectorAll('.run-button .bx-pause').forEach(icon => {
-                    icon.classList.remove('bx-pause');
-                    icon.classList.add('bxs-right-arrow');
-                    });
-                
-                    if (!file) {
-                        console.log(JSON.stringify(button.dataset.songFile))
-                        console.error("data-song-file attribute'u yok!");
-                        return;
-                    }
-
-                    localStorage.setItem("file", file);
-                    source.src = "../../media/" + file;
-
-                    localStorage.setItem("image", image);
-                    img.src = image;
-
-                    localStorage.setItem("a_name", a_name);
-                    h5_a_name.innerHTML = a_name;
-
-                    localStorage.setItem("m_name", m_name);
-                    h3_m_name.innerHTML = m_name;
-
-                    player_playlist_name.innerHTML = '_';
+            });
+            icon.classList.remove('bx-pause');
+            playPause();
+        } else {
+            const file = button.dataset.songFile;
+            const image = button.dataset.songImage;
+            const m_name = button.dataset.songMusicName;
+            const a_name = button.dataset.songArtistName;
+            const p_p_n = player_playlist_name.dataset.playerPlaylistName;
 
 
-                    song.load();
-
-                    song.addEventListener("loadedmetadata", function () {
-                        document.getElementById("duration").innerHTML = formatTime(song.duration);
-                    });
-
-                    playPause();
-                } else {
-                    document.querySelectorAll('.run-button .bx-pause').forEach(icon => {
-                    icon.classList.remove('bx-pause');
-                    icon.classList.add('bxs-right-arrow');
-                    });
-                
-                    if (!file) {
-                        console.log(JSON.stringify(button.dataset.songFile))
-                        console.error("data-song-file attribute'u yok!");
-                        return;
-                    }
-
-                    localStorage.setItem("file", file);
-                    source.src = "../../media/" + file;
-
-                    localStorage.setItem("image", image);
-                    img.src = image;
-
-                    localStorage.setItem("a_name", a_name);
-                    h5_a_name.innerHTML = a_name;
-
-                    localStorage.setItem("m_name", m_name);
-                    h3_m_name.innerHTML = m_name;
-
-                    player_playlist_name.innerHTML = p_p_n;
-
-
-                    song.load();
-
-                    song.addEventListener("loadedmetadata", function () {
-                        document.getElementById("duration").innerHTML = formatTime(song.duration);
-                    });
-
-                    playPause();
-                    
-                }
+            if (button.classList.contains('not-listed')) {
+                document.querySelectorAll('.run-button .bx-pause').forEach(icon => {
+                    updateRunButtonIcons("/media/" + file);
+                });
             
-                
+                if (!file) {
+                    console.log(JSON.stringify(button.dataset.songFile))
+                    console.error("data-song-file attribute'u yok!");
+                    return;
+                }
+            }
 
-            };
-        });
+            localStorage.setItem("file", file);
+            source.src = "../../media/" + file;
+
+            localStorage.setItem("image", image);
+            img.src = image;
+
+            localStorage.setItem("a_name", a_name);
+            h5_a_name.innerHTML = a_name;
+
+            localStorage.setItem("m_name", m_name);
+            h3_m_name.innerHTML = m_name;
+
+            if (button.classList.contains('not-listed')) {
+                player_playlist_name.innerHTML = '_';
+            } else {
+                player_playlist_name.innerHTML = p_p_n;
+            }
+
+            updateRunButtonIcons("/media/" + file);
+
+            song.load();
+
+            song.addEventListener("loadedmetadata", function () {
+                document.getElementById("duration").innerHTML = formatTime(song.duration);
+            });
+
+            playPause();
+        };
+
     });
 });
-
-

@@ -38,27 +38,17 @@
                     <div class="items">
                         {% for list in PlaylistAll %}
                         {% if list.id != trending.id %}
-                        {% if list.image %}
-                        <div class="item" onclick="location.href='/playlist/{{ list.id }}';">
+                        <div class="item colorful" onclick="location.href='/playlist/{{ list.id }}';">
                             <div class="info">
+                                {% if list.image %}
                                 <img src="{{ list.image.url }}">
-                                <h4>{{ list.name }}</h4>
-                                {% if user.is_authenticated %}
-                                <p>- {{ list.songs.count }} Songs -</p>
-                                {% endif %}
-                            </div>
-                        </div>
-                        {% else %}
-                        <div class="item" onclick="location.href='/playlist/{{ list.id }}';">
-                            <div class="info">
+                                {% else %}
                                 <img src="../../static/img/def-image.png">
-                                <h4>{{ list.name }}</h4>
-                                {% if user.is_authenticated %}
-                                <p>- {{ list.songs.count }} Songs -</p>
                                 {% endif %}
+                                <h4>{{ list.name }}</h4>
+                                <p>- {{ list.songs.count }} Songs -</p>
                             </div>
                         </div>
-                        {% endif %}
                         {% endif %}
                         {% endfor %}
                     </div>
@@ -70,49 +60,56 @@
                     </div>
                     <div class="items">
                         <div class="item">
-                            dnvldv
+                            <div class="info">
+                                <img src="../../static/img/def-image.png">
+                                <h4>SavedList1</h4>
+                                <p>- 10 Songs -</p>
+                            </div>
                         </div>
-                        <div class="item">dnvldv</div>
-                        <div class="item">dnvldv</div>
-                        <div class="item">dnvldv</div>
-                        <div class="item">dnvldv</div>
-                        <div class="item">dnvldv</div>
-                        <div class="item">dnvldv</div>
+                        <div class="item">
+                            <div class="info">
+                                <img src="../../static/img/def-image.png">
+                                <h4>SavedList2</h4>
+                                <p>- 10 Songs -</p>
+                            </div>
+                        </div>
+                        <div class="item">
+                            <div class="info">
+                                <img src="../../static/img/def-image.png">
+                                <h4>SavedList3</h4>
+                                <p>- 10 Songs -</p>
+                            </div>
+                        </div>
+                        <div class="item">
+                            <div class="info">
+                                <img src="../../static/img/def-image.png">
+                                <h4>SavedList4</h4>
+                                <p>- 10 Songs -</p>
+                            </div>
+                        </div>
+                        <div class="item">
+                            <div class="info">
+                                <img src="../../static/img/def-image.png">
+                                <h4>SavedList5</h4>
+                                <p>- 10 Songs -</p>
+                            </div>
+                        </div>
                     </div>
                 </div>
                 <div class="playlists-row">
                     <div class="header">
-                        <div class="name">Saved Playlists</div>
+                        <div class="name">Local Storage</div>
                     </div>
                     <div class="items">
-                        <div class="item">
-                            dnvldv
+                        <div class="item" style="background-color: #b8b8b8ba;">
+                            <div class="info">
+                                <img src="../../static/img/def-image.png">
+                                <h4>LOCAL</h4>
+                                <p>- 50 Songs -</p>
+                            </div>
                         </div>
-                        <div class="item">dnvldv</div>
-                        <div class="item">dnvldv</div>
-                        <div class="item">dnvldv</div>
-                        <div class="item">dnvldv</div>
-                        <div class="item">dnvldv</div>
-                        <div class="item">dnvldv</div>
                     </div>
                 </div>
-                <div class="playlists-row">
-                    <div class="header">
-                        <div class="name">Saved Playlists</div>
-                    </div>
-                    <div class="items">
-                        <div class="item">
-                            dnvldv
-                        </div>
-                        <div class="item">dnvldv</div>
-                        <div class="item">dnvldv</div>
-                        <div class="item">dnvldv</div>
-                        <div class="item">dnvldv</div>
-                        <div class="item">dnvldv</div>
-                        <div class="item">dnvldv</div>
-                    </div>
-                </div>
-                
             </div>
 
         </main>
