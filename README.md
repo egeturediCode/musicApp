@@ -18,7 +18,8 @@ Follow these steps to run the project locally on your machine.
 
 ### Requirements
 
-- Python 3.8 or higher  
+- Python 3.8 or higher
+- Django
 - Git  
 - Virtualenv (for creating a virtual environment)
 
@@ -27,7 +28,7 @@ Follow these steps to run the project locally on your machine.
 1. Clone the repository:
     ```bash
     git clone https://github.com/egeturediCode/musicApp.git
-    cd musicApp
+    
     ```
 
 2. Create and activate a virtual environment:
@@ -42,35 +43,38 @@ Follow these steps to run the project locally on your machine.
     pip install -r requirements.txt
     ```
 
-4. Set environment variables:
-
-    Create a `.env` file in the project root directory and add:
-    ```
-    DJANGO_SECRET_KEY='your_secret_key_here'
-    DJANGO_DEBUG=True
-    ```
-
-5. Apply database migrations:
+4. Apply database migrations:
     ```bash
+    cd musicApp
     python manage.py migrate
     ```
 
-6. Run the development server:
+5. Run the development server:
     ```bash
     python manage.py runserver
     ```
 
-7. Open your browser and go to `http://127.0.0.1:8000/`.
+6. Open your browser and go to `http://127.0.0.1:8000/`.
 
 ---
 
 ## Usage
 
+- Access the admin panel at `http://127.0.0.1:8000/admin`.
+- Default SuperUser =>
+    username:
+    ```bash
+    user
+    ```
+    password:
+    ```bash
+    userpassWorD
+    ```
 - To create an admin user:
     ```bash
     python manage.py createsuperuser
     ```
-- Access the admin panel at `http://127.0.0.1:8000/admin`.
+
 
 ---
 

@@ -1,0 +1,191 @@
+[ 
+  {
+    "model": "auth.user",
+    "pk": 1,
+    "fields": {
+        "password": "pbkdf2_sha256$600000$e8pojIJVLwmCmdk3kS3ZXM$qKRbAlFGLqnjZ871iR/rEFgyypkMVxSDjOthejK+nLk=",
+        "last_login": null,
+        "is_superuser": true,
+        "username": "user",
+        "first_name": "",
+        "last_name": "",
+        "email": "",
+        "is_staff": true,
+        "is_active": true,
+        "date_joined": "2025-08-12T19:43:19.411Z",
+        "groups": [],
+        "user_permissions": []
+    }
+  },
+
+
+
+  {
+    "model": "main_page.genres",
+    "pk": 1,
+    "fields": {
+      "name": "HipHop Rap",
+      "is_showed": 1
+    }
+  },
+  {
+    "model": "main_page.genres",
+    "pk": 2,
+    "fields": {
+      "name": "Electro Pop",
+      "is_showed": 1
+    }
+  },
+  {
+    "model": "main_page.genres",
+    "pk": 3,
+    "fields": {
+      "name": "Dance Beat",
+      "is_showed": 1
+    }
+  },
+  {
+    "model": "main_page.genres",
+    "pk": 4,
+    "fields": {
+      "name": "Classical Period",
+      "is_showed": 1
+    }
+  },
+  {
+    "model": "main_page.genres",
+    "pk": 5,
+    "fields": {
+      "name": "Clubhouse Remix",
+      "is_showed": 1
+    }
+  },
+  {
+    "model": "main_page.genres",
+    "pk": 6,
+    "fields": {
+      "name": "Turkish Pop",
+      "is_showed": 1
+    }
+  },
+
+
+
+  {
+    "model": "main_page.song",
+    "pk": 1,
+    "fields": {
+      "name": "Numb",
+      "artist_name": "NEFFEX",
+      "duration": "0:02:24",
+      "image": "img/songs/song-1_gQt0IpU.png",
+      "audio_file": "audio/NEFFEX_-_Numb_LjQW9WE.mp3",
+      "is_fav": false
+    }
+  },
+  {
+    "model": "main_page.song",
+    "pk": 2,
+    "fields": {
+      "name": "Careless",
+      "artist_name": "NEFFEX",
+      "duration": "0:04:56",
+      "image": "img/songs/song-2_zfQC9eu.png",
+      "audio_file": "audio/NEFFEX_-_Careless_Uuq9rbx.mp3",
+      "is_fav": false
+    }
+  },
+  {
+    "model": "main_page.song",
+    "pk": 3,
+    "fields": {
+      "name": "Rumors",
+      "artist_name": "NEFFEX",
+      "duration": "0:04:07",
+      "image": "img/songs/song-3_1kLcY2c.png",
+      "audio_file": "audio/NEFFEX_-_Rumors_dMgWJMu.mp3",
+      "is_fav": false
+    }
+  },
+  {
+    "model": "main_page.song",
+    "pk": 4,
+    "fields": {
+      "name": "After Hours",
+      "artist_name": "The Weekend",
+      "duration": "0:06:02",
+      "image": "img/songs/song-4.png",
+      "audio_file": "audio/The_Weeknd_-_After_Hours_JWVdNIW.mp3",
+      "is_fav": false
+    }
+  },
+  {
+    "model": "main_page.song",
+    "pk": 5,
+    "fields": {
+      "name": "Fainted",
+      "artist_name": "Narvent",
+      "duration": "0:04:10",
+      "image": "img/songs/trend_DKoLQGw.png",
+      "audio_file": "audio/Narvent_-_Fainted_77pulxz.mp3",
+      "is_fav": false
+    }
+  },
+  {
+    "model": "main_page.song",
+    "pk": 6,
+    "fields": {
+      "name": "One Of Us",
+      "artist_name": "Clarx, Zaug & SlidV",
+      "duration": "0:02:19",
+      "image": "img/songs/song-1_sUqnSNm.png",
+      "audio_file": "audio/Clarx_Zaug__SlidV_-_One_Of_Us_V3ER5mX.mp3",
+      "is_fav": false
+    }
+  },
+  {
+    "model": "main_page.song",
+    "pk": 7,
+    "fields": {
+      "name": "Interlinked",
+      "artist_name": "Lonely Lies, GOLDKID$",
+      "duration": "0:03:26",
+      "image": "img/songs/song-2_m2nMmG0.png",
+      "audio_file": "audio/Lonely_Lies_GOLDKID_-_Interlinked_cQPjVab.mp3",
+      "is_fav": false
+    }
+  },
+
+
+
+  {
+    "model": "main_page.playlist",
+    "pk": 1,
+    "fields": {
+      "name": "Trending",
+      "songs": [],
+      "image": "img/playlists/trend_4wthazd.png",
+      "description": "Main Page's Trend Musics for Template."
+    }
+  },
+  {
+    "model": "main_page.playlist",
+    "pk": 1,
+    "fields": {
+      "name": "Top Songs",
+      "songs": [],
+      "image": "img/playlists/song-3_mPH1b6E.png",
+      "description": "Top Songs of the Week."
+    }
+  },
+  {
+    "model": "main_page.playlist",
+    "pk": 1,
+    "fields": {
+      "name": "Best of 2025",
+      "songs": [],
+      "image": "img/playlists/song-3.png",
+      "description": "Best Songs of 2025."
+    }
+  }
+]
