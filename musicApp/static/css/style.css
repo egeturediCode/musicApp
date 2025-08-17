@@ -41,6 +41,7 @@ html,body {
 }
 
 .container {
+    height: 100%;
     width: 100%;
     display: grid;
     margin: 0 auto;
@@ -59,7 +60,7 @@ html,body {
 }
 
 .container .sidebar {
-    height: 100vh;
+    height: 100%;
     background-color: var(--color5);
     padding: 20px 36px;
     display: flex;
@@ -75,6 +76,7 @@ html,body {
     display: flex;
     align-items: center;
     gap: 6px;
+    margin-top: 16px;
 }
 
 .container .sidebar .logo > i {
@@ -149,6 +151,7 @@ html,body {
     overflow: hidden;
     display: flex;
     flex-direction: column;
+    justify-content: space-evenly;
 }
 
 .container main header{
@@ -444,6 +447,9 @@ html,body {
 .container .right-section {
     padding: 20px 36px 0px 36px;
     overflow-x: hidden;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
 }
 
 .container .right-section .profile {

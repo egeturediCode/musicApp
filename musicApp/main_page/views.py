@@ -4,6 +4,8 @@ from main_page.models import Genres,Playlist,Song
 from django.shortcuts import render, redirect, get_object_or_404
 from .forms import PlaylistForm
 import random
+from random import shuffle, choice
+
 # Create your views here.
 
 
@@ -151,6 +153,16 @@ def artists(request):
     return render(request,"artists.html",content)
 
 def explore(request):
+    songs = Song.objects.all()
+    # the songs to get a random selection according to the selected artist
+    artists = Song.objects.values_list('artist_name', flat=True).distinct()
+    selected_artist = choice(list(artists))
+    for_x_fans = Song.objects.filter(artist_name=selected_artist).all()
+
+    new_releases = Song.objects.all().order_by('-id')[:6]
+
+    random_songs = Song.objects.order_by('?')[:6]
+
     if request.method == 'POST':
         form = PlaylistForm(request.POST or None)
         if form.is_valid():
@@ -161,9 +173,11 @@ def explore(request):
 
     content = {
         "Playlist3": Playlist.objects.all()[:4],
-        "Song": Song.objects.all(),
-        "form": form
-
+        "SongAll" : songs,
+        "form": form,
+        "for_x_fans": for_x_fans,
+        "new_releases": new_releases,
+        "random_songs": random_songs,
     }
     return render(request,"explore.html",content)
 

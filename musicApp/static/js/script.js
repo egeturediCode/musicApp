@@ -318,3 +318,36 @@ document.querySelectorAll('.run-button').forEach(button => {
 
     });
 });
+
+
+
+// up and down button for explore section
+
+const upButton = document.querySelector('.up-button');
+const downButton = document.querySelector('.down-button');
+
+upButton.addEventListener('click', () => {
+    const allExplore = document.querySelector('.all-explore');
+    allExplore.scrollBy({
+        top: -allExplore.clientHeight,
+        behavior: 'smooth'
+    });
+    downButton.style.opacity = 0.9;
+    upButton.style.opacity = 0;
+
+    downButton.style.display = 'flex';
+    upButton.style.display = 'none';
+});
+
+downButton.addEventListener('click', () => {
+    const allExplore = document.querySelector('.all-explore');
+    allExplore.scrollBy({
+        top: allExplore.clientHeight,
+        behavior: 'smooth'
+    });
+    downButton.style.opacity = 0;
+    upButton.style.opacity = 0.9;
+
+    downButton.style.display = 'none';
+    upButton.style.display = 'flex';
+});

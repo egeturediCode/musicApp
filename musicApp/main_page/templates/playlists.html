@@ -36,6 +36,7 @@
                         </div>
                     </div>
                     <div class="items">
+                        {% if PlaylistAll.count > 0 %}
                         {% for list in PlaylistAll %}
                         {% if list.id != trending.id %}
                         <div class="item colorful" onclick="location.href='/playlist/{{ list.id }}';">
@@ -51,6 +52,11 @@
                         </div>
                         {% endif %}
                         {% endfor %}
+                        {% else %}
+                        <div style="display: flex; width: 100%; height: 100%; align-items: center; justify-content: center;">
+                            <p style="color: var(--color1);">No playlists available</p>
+                        </div>
+                        {% endif %}
                     </div>
                 </div>
                 
@@ -101,7 +107,7 @@
                         <div class="name">Local Storage</div>
                     </div>
                     <div class="items">
-                        <div class="item" style="background-color: #b8b8b8ba;">
+                        <div class="item" style="background-color: #00000034;">
                             <div class="info">
                                 <img src="../../static/img/def-image.png">
                                 <h4>LOCAL</h4>

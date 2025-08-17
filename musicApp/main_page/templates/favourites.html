@@ -17,6 +17,7 @@
                     </div>
                     <div class="items">
                         <!-- Django'da geçiçi değişken tanımlamak için fav_count = 0 yerine with scope'u açılır.-->
+                        {% if Fav_songs.count > 0 %}
                         {% for song in Fav_songs %}
                         <div class="item">
                             <div class="info">
@@ -42,6 +43,11 @@
                             </div>
                         </div>
                         {% endfor %}
+                        {% else %}
+                        <div style="display: flex; width: 100%; align-items: center; justify-content: center; height: 300px;">
+                            <p style="color: var(--color1);">No favourites available</p>
+                        </div>
+                        {% endif %}
                     </div>
                 </div>
             </div>

@@ -49,6 +49,7 @@ display: block;">{{ Selected_playlist.description }}</h4>
                         <a href="#">See all</a>
                     </div>
                     <div class="items">
+                        {% if not Selected_playlist.songs.count == 0 %}
                         {% for song in Selected_playlist.songs.all %}
                         <div class="item">
                             <div class="info">
@@ -73,6 +74,13 @@ display: block;">{{ Selected_playlist.description }}</h4>
                             </div>
                         </div>
                         {% endfor %}
+                        {% else %}
+                        <div class="item" style="height: 240px;">
+                            <div class="info" style="justify-content: center; width: 100%;">
+                                <p>No songs available</p>
+                            </div>
+                        </div>
+                        {% endif %}
                     </div>
                 </div>
             </div>

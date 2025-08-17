@@ -1,0 +1,122 @@
+.container main .all-explore {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    width: 100%;
+    height: 685px;
+    overflow-y: hidden;
+    padding-left: 32px;
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+    -webkit-scrollbar {
+        display: none;
+    }
+}
+
+.container main .all-explore .section {
+    width: 100%;
+    min-height: 49%;
+    max-height: 49%;
+}
+
+.container main .all-explore .section h2 {
+    color: var(--color1);
+}
+
+.container main .all-explore .section .items {
+    width: 100%;
+    overflow-x: auto;
+    overflow-y: hidden;
+    flex-direction: row;
+    display: flex;
+    gap: 12px;
+    padding: 12px 0;
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+    -webkit-scrollbar {
+        display: none;
+    }
+}
+
+.container main .all-explore .section .items .item {
+    position: relative;
+    min-width: 240px;
+    max-width: 240px;
+    max-height: 270px;
+    min-height: 270px;
+    background-color: var(--color2);
+    border-radius: 8px;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+}
+
+.container main .all-explore .section .items .item img {
+    width: 100%;
+    height: 100%;
+    border-radius: 8px;
+    object-fit: cover;
+    transition: all 0.4s ease;
+}
+
+.container main .all-explore .section .items .item img:hover {
+    width: 105%;
+    height: 105%;
+    transition: all 0.4s ease;
+}
+
+.container main .all-explore .section .items .item div {
+    display: flex;
+    position: absolute;
+    width: 100%;
+    height: 24%;
+    text-align: center;
+    justify-content: center;
+    align-items: center;
+    background-color: #090b0da7;
+    color: rgba(255, 255, 255, 0.703);
+    letter-spacing: 2px;
+    bottom: 0;
+    left: 0;
+}
+
+.container main .all-explore button {
+    width: min-content;
+    padding: 10px;
+    border: none;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+}
+
+.container main .all-explore button.up-button {
+    display: none;
+    opacity: 0;
+    position: absolute;
+    bottom: -50px;
+    right: 46%;
+    background-color: var(--color8);
+    color: var(--color1);
+    font-size: 22px;
+    border: none;
+    outline: none;
+    transition: all 1s ease;
+}
+
+.container main .all-explore button.down-button {
+    position: absolute;
+    bottom: 0;
+    right: 46%;
+    background-color: var(--color8);
+    color: var(--color1);
+    font-size: 22px;
+    border: none;
+    outline: none;
+    opacity: 0.9;
+    transition: all 1s ease;
+}
