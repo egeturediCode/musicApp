@@ -22,3 +22,5 @@ __pycache__/
 
 musicApp/media/img/songs/*.*
 musicApp/media/img/playlists/2.png
+
+*.env
