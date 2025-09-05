@@ -9,6 +9,19 @@
 
 
 {% block content %}
+            <div class="trending playlist-info">
+                <div class="left">
+                    <div class="info">
+                        <h2>Favourites</h2>
+                        <div style="display: flex;">
+                            <h5>{{ Fav_songs.count }} Songs</h5>
+                        </div>
+                    </div>
+                </div>
+                <div class="background">
+                    <img src="{% static 'img/fav-background2.png' %}">
+                </div>
+            </div>
             <div class="playlist">
                 <div class="music-list">
                     <div class="header">

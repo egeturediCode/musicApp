@@ -177,15 +177,5 @@
       "image": "img/playlists/song-3_mPH1b6E.png",
       "description": "Top Songs of the Week."
     }
-  },
-  {
-    "model": "main_page.playlist",
-    "pk": 3,
-    "fields": {
-      "name": "Best of 2025",
-      "songs": [1,3,6,7],
-      "image": "img/playlists/song-3.png",
-      "description": "Best Songs of 2025."
-    }
   }
 ]

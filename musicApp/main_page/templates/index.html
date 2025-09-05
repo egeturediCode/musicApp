@@ -2,8 +2,12 @@
 {% load static %}
 
 
+
 {% block title %} MusicApp | HomePage {% endblock %}
 
+{% block extra_css %} 
+<link rel="stylesheet" href="{% static 'index/css/index.css' %}"> 
+{% endblock %}
 
 {% block content %}
             <div class="trending">
