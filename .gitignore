@@ -20,7 +20,7 @@ __pycache__/
 # media/audio dosyaları
 *.mp3
 
-/musicApp/media/img/songs/*.jpg
-/musicApp/media/img/songs/*.jpeg
-/musicApp/media/img/songs/*.png
-/musicApp/media/img/playlists/2.png
+musicApp/media/img/songs/*.jpg
+musicApp/media/img/songs/*.jpeg
+musicApp/media/img/songs/*.png
+musicApp/media/img/playlists/2.png
