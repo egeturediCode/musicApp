@@ -46,6 +46,7 @@ Follow these steps to run the project locally on your machine.
 4. Apply database migrations:
     ```bash
     cd musicApp
+    python3 manage.py makemigrations
     python3 manage.py migrate
     python3 manage.py loaddata initial_data.json
     ```
@@ -55,7 +56,7 @@ Follow these steps to run the project locally on your machine.
     python3 manage.py runserver
     ```
 
-6. Open your browser and go to `http://127.0.0.1:8000/`.
+6. Open your browser and go to `http://127.0.0.1:8000/admin`.
 
 ---
 
@@ -76,6 +77,10 @@ Follow these steps to run the project locally on your machine.
     python manage.py createsuperuser
     ```
 
+- Add some music for it to work properly on admin panel. 
+No music has been added to the project due to copyright reasons.
+
+- Add music to default playlist that already created. (Trending , Top Songs)
 
 ---
 
