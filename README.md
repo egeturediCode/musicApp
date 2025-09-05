@@ -43,7 +43,13 @@ Follow these steps to run the project locally on your machine.
     pip install -r requirements.txt
     ```
 
-4. Apply database migrations:
+4. Run the code to create secret_key:
+    ```bash
+    python -c "from django.core.management.utils import get_random_secret_key; print(get_random_secret_key())"
+    ```
+    Chenge the key on settings.py. SECRET_KEY = config('DJANGO_SECRET_KEY') = SECRET_KEY = 'new_key'
+
+5. Apply database migrations:
     ```bash
     cd musicApp
     python3 manage.py makemigrations
@@ -51,12 +57,12 @@ Follow these steps to run the project locally on your machine.
     python3 manage.py loaddata initial_data.json
     ```
 
-5. Run the development server:
+6. Run the development server:
     ```bash
     python3 manage.py runserver
     ```
 
-6. Open your browser and go to `http://127.0.0.1:8000/admin`.
+7. Open your browser and go to `http://127.0.0.1:8000/admin`.
 
 ---
 
