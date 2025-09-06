@@ -2,6 +2,7 @@
 musicApp is a simple music application built with Django. The project includes basic CRUD operations, user management, and media file handling features.
 
 ---
+![](img2.png)
 
 ## Features
 
@@ -10,6 +11,9 @@ musicApp is a simple music application built with Django. The project includes b
 - Manage media files (album covers, audio files)  
 - Easy administration via Django admin panel
 
+
+
+![](img1.png)
 ---
 
 ##  Installation
