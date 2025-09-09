@@ -65,18 +65,17 @@ html , body {
 }
 
 .container {
-    padding: 3vh;
-    background: linear-gradient(160deg, #011F26,#011F26,#050505,#18181d);
+    background-color: #090B0D;
     margin: auto;
     width: 100%;
     height: 100%;
     display: flex;
     align-items: center;
-    justify-content: space-between;
-
+    justify-content: center;
 }
 
 .container .left {
+    background-color: var(--color4);
     height: 100%;
     width: 53%;
     position: relative;
@@ -85,7 +84,23 @@ html , body {
 .container .left img {
     height: 100%;
     width: 98%;
-    border-radius: 14px;
+    -webkit-user-drag: none; /* Safari/Chrome */
+    -khtml-user-drag: none;  /* eski Safari */
+    -moz-user-drag: none;    /* Firefox */
+    -o-user-drag: none;      /* Opera */
+    user-select: none;
+    z-index: 1;
+    position: relative;
+}
+
+.container .left .i {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 800px;
+    z-index: 0;
+    color: var(--color1);
 }
 
 .container .right {

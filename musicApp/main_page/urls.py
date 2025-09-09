@@ -19,4 +19,5 @@ urlpatterns = [
     path("artists", views.artists),
     path("albums", views.albums),
     path('toggle-fav/<int:song_id>/', views.toggle_favorite, name='toggle_favorite'),
+    
 ]

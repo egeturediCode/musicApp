@@ -6,6 +6,10 @@ from .forms import PlaylistForm
 import random
 from random import shuffle, choice
 
+from django.contrib.auth.decorators import login_required
+from django.shortcuts import render
+
+
 # Create your views here.
 
 
@@ -28,6 +32,7 @@ def play_music(request, song_id):
 
 #-------------------------------------------------------------------------------------
 
+@login_required(login_url='/user/login')
 def main_page(request):
     selected_main = Playlist.objects.filter(name ="Top Songs").first()
     trending = Playlist.objects.filter(name = "Trending").first()
@@ -53,6 +58,7 @@ def main_page(request):
     }
     return render(request, "index.html",content)
 
+@login_required(login_url='/user/login')
 def playlist_page(request, playlist_id=None):
     selected = Playlist.objects.filter(id=playlist_id).first()
     
@@ -76,6 +82,7 @@ def playlist_page(request, playlist_id=None):
     }
     return render(request,"playlist.html",content)
 
+@login_required(login_url='/user/login')
 def playlists(request, playlist_id=None):
     selected = Playlist.objects.filter(id=playlist_id).first()
     trending = Playlist.objects.filter(name = "Trending").first()
@@ -99,6 +106,7 @@ def playlists(request, playlist_id=None):
     }
     return render(request,"playlists.html",content)
 
+@login_required(login_url='/user/login')
 def genres(request):
     if request.method == 'POST':
         form = PlaylistForm(request.POST or None)
@@ -118,6 +126,7 @@ def genres(request):
     }
     return render(request,"genres.html",content)
 
+@login_required(login_url='/user/login')
 def albums(request):
     if request.method == 'POST':
         form = PlaylistForm(request.POST or None)
@@ -135,6 +144,7 @@ def albums(request):
     }
     return render(request,"albums.html",content)
 
+@login_required(login_url='/user/login')
 def artists(request):
     if request.method == 'POST':
         form = PlaylistForm(request.POST or None)
@@ -152,6 +162,7 @@ def artists(request):
     }
     return render(request,"artists.html",content)
 
+@login_required(login_url='/user/login')
 def explore(request):
     songs = Song.objects.all()
     # the songs to get a random selection according to the selected artist
@@ -181,6 +192,7 @@ def explore(request):
     }
     return render(request,"explore.html",content)
 
+@login_required(login_url='/user/login')
 def favourites(request):
     if request.method == 'POST':
         form = PlaylistForm(request.POST or None)
@@ -199,6 +211,7 @@ def favourites(request):
     }
     return render(request,"favourites.html",content)
 
+@login_required(login_url='/user/login')
 def live(request):
     if request.method == 'POST':
         form = PlaylistForm(request.POST or None)
